@@ -11,13 +11,13 @@ def lire_fichierTemp(fichier_Temp):
     
     # Vérifier si le fichier existe et est accessible
     try:
-        with open(fichier_Temp, 'r', encoding='utf-8') as fichier:
-            lecteur = csv.reader(fichier)
+        with open(fichier_Temp, 'r', encoding='utf-8') as DonneeTemp:
+            ExtractionTemp = csv.reader(DonneeTemp)
             # Ignorer l'en-tête
-            next(lecteur)
+            next(ExtractionTemp)
             # Lecture des données
             # la boucle permet de lire chaque ligne du fichier
-            for ligne in lecteur:
+            for ligne in ExtractionTemp:
                 jours.append(ligne[0])
                 temperatures.append(float(ligne[1]))
         return jours, temperatures
@@ -25,6 +25,7 @@ def lire_fichierTemp(fichier_Temp):
         print(f"Erreur lors de la lecture du fichier: {e}")
         return [], []
     # Si le fichier n'existe pas ou n'est pas accessible, afficher un message d'erreur
+
 
 def calculStat(temperatures):
     # Fonction pour calculer la moyenne, le minimum et le maximum des températures
